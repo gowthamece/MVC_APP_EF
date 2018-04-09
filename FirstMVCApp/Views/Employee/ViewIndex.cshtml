@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "ViewIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var emp = (List<FirstMVCApp.Models.Employee>)ViewData["Employee"]; // Cast the list
+}
+
+@{
+    var emp_list = (List<FirstMVCApp.Models.Employee>)TempData["Emp"]; // Cast the list
+}
+
+<ul>
+    @foreach (var c in @emp) // Print the list
+    {
+
+        <li>@c.FirstName </li>
+
+    }
+</ul>
+
+<ul>
+    @foreach (var c in @ViewBag.Employee) // Print the list
+    {
+
+        <li>@c.FirstName </li>
+
+    }
+</ul>
+
+
+<ul>
+    @foreach (var c in @emp_list) // Print the list
+    {
+
+        <li>@c.FirstName </li>
+
+    }
+</ul>
