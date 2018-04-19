@@ -14,6 +14,21 @@ namespace FirstMVCApp.Controllers
     {
         private EmployeeEntities db = new EmployeeEntities();
 
+        public ActionResult JQAjax(Employee employee)
+        {
+            try
+            {
+                return Json(new
+                {
+                    msg = "Successfully added " + employee.FirstName
+                });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         // GET: Employees
         public ActionResult Index()
         {
@@ -45,7 +60,7 @@ namespace FirstMVCApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+      
         public ActionResult Create([Bind(Include = "EmployeeID,FirstName,LastName,Email,Password,Age")] Employee employee)
         {
             if (ModelState.IsValid)

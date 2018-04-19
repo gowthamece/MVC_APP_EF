@@ -13,13 +13,14 @@ namespace FirstMVCApp.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult About() //About us PAge
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
+        [Authorize(Roles ="Admin")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -14,7 +14,8 @@ namespace FirstMVCApp.Models
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Collections.Generic;
+
     public partial class EmployeeEntities : DbContext
     {
         public EmployeeEntities()
@@ -97,13 +98,13 @@ namespace FirstMVCApp.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("stp_UpdateEmpDetails", empIdParameter, firstNameParameter, lastNameParameter, emailParameter, passwordParameter, ageParameter);
         }
     
-        public virtual ObjectResult<string> stp_Get_Emp_FirstName(Nullable<int> empID)
+        public virtual List<string> stp_Get_Emp_FirstName(Nullable<int> empID)
         {
             var empIDParameter = empID.HasValue ?
                 new ObjectParameter("EmpID", empID) :
                 new ObjectParameter("EmpID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("stp_Get_Emp_FirstName", empIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("stp_Get_Emp_FirstName", empIDParameter).ToList();
         }
     }
 }
