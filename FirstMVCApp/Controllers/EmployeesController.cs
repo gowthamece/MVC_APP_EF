@@ -18,10 +18,12 @@ namespace FirstMVCApp.Controllers
         {
             try
             {
-                return Json(new
-                {
-                    msg = "Successfully added " + employee.FirstName
-                });
+                //return Json(new
+                //{
+                //    msg = "Successfully added " + employee.FirstName
+                //});
+                return Json(new { Employee=employee, JsonRequestBehavior.AllowGet });
+                     
             }
             catch (Exception ex)
             {
@@ -33,6 +35,18 @@ namespace FirstMVCApp.Controllers
         public ActionResult Index()
         {
             return View(db.Employees.ToList());
+            //return Json(db.Employees.ToList(), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetEmployees()
+        {
+            try
+            {
+                return Json(db.Employees.ToList(), JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception ex)
+            {
+                return Json("false");
+            }
         }
 
         // GET: Employees/Details/5
