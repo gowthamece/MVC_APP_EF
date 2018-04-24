@@ -10,6 +10,26 @@ $(document).ready(function () {
     $("#txttrest").val("hello");
     $("#txttrest").attr('style', 'color:blue');
     $("#txttrest").addClass('txtstyle');
+    //Each with call back 
+    var result = '';
+    $('#fruitList li').each(function (index, value) {
+        result += $(value).text() + '|'
+    });
+     //Each with call back  With Array
+    var result = [];
+    $('#fruitList li').each(function (index, value) {
+        result += $(value).text() + '|'
+    });
+   // alert(result);
+    console.log(result)
+    //Map function with call back 
+    var mapResult = $('#fruitList li').map(function (index, value) {
+        return $(value).text() + '|';
+    }).get();
+    //alert(mapResult);
+    console.log(mapResult)
+
+    Cookies.set('name', 'Cookies Test');
 
     $.ajax({
         type: "GET",
